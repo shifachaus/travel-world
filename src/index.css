@@ -1,3 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body,
+#root,
+.app {
+  font-family: "Crimson Text", serif;
+}
+
+@layer utilities {
+  .custom-bg {
+    background-image: linear-gradient(
+        rgba(36, 42, 46, 0.8),
+        rgba(36, 42, 46, 0.8)
+      ),
+      url("./assets/heroimage.png");
+    background-size: cover;
+    background-position: center;
+  }
+
+  .font {
+    font-family: "Nunito Sans", sans-serif;
+  }
+}
