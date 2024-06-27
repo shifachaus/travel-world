@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
+import BackButton from "./BackButton";
 
 const Form = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Form = () => {
 
   return (
     <form className="max-w-sm mx-auto " onSubmit={handleSubmit}>
-      <div>
+      <div className="mb-5">
         <label
           htmlFor="cityName"
           className="block mb-2 text-md font-medium text-white"
@@ -32,7 +33,7 @@ const Form = () => {
         {/* <span className={styles.flag}>{emoji}</span> */}
       </div>
 
-      <div>
+      <div className="mb-5">
         <label
           htmlFor="date"
           className="block mb-2 text-md font-medium text-white"
@@ -47,7 +48,7 @@ const Form = () => {
         />
       </div>
 
-      <div>
+      <div className="mb-5">
         <label
           htmlFor="notes"
           className="block mb-2 text-md font-medium text-white"
@@ -62,11 +63,9 @@ const Form = () => {
         />
       </div>
 
-      <div>
-        <Button type="back-btn" onClick={() => navigate(-1)}>
-          &larr; Back
-        </Button>
-        <Button type="primary-green">Add</Button>
+      <div className="flex justify-between">
+        <BackButton />
+        <Button type="bg-primary rounded-lg px-5 py-2.5">Add</Button>
       </div>
     </form>
   );
