@@ -13,11 +13,11 @@ const CityItem = ({ city }) => {
 	border border-l-4 border-l-primary border-t-[#2C3747] border-b-[#2C3747] border-r-[#2C3747] hover:bg-[#2C3747]"
     >
       <div className="flex gap-4 items-center">
-        <span className="">{emoji}</span>
-        <h3 className="">{cityName}</h3>
+        <span className="text-md">{emoji}</span>
+        <h3 className="font__CrimsonText text-lg">{cityName}</h3>
       </div>
       <div className="flex gap-4 items-center">
-        <time className="">({formatDate(date)})</time>
+        <time className="font__CrimsonText text-sm">({formatDate(date)})</time>
         <button className="cursor-pointer">&times;</button>
       </div>
     </li>

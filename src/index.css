@@ -25,4 +25,8 @@ body,
   .font {
     font-family: "Nunito Sans", sans-serif;
   }
+
+  .font__CrimsonText {
+    font-family: "Crimson Text", serif;
+  }
 }
