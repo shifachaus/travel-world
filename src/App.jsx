@@ -3,6 +3,7 @@ import Homepage from "./pages/Homepage";
 import PageNotFound from "./pages/PageNotFound";
 import Login from "./pages/Login";
 import AppLayout from "./pages/AppLayout";
+import CityList from "./components/CityList";
 
 const App = () => {
   return (
@@ -13,7 +14,7 @@ const App = () => {
         <Route path="*" element={<PageNotFound />} />
         <Route path="app" element={<AppLayout />}>
           <Route index element={<Navigate replace to="cities" />} />
-          <Route path="cities" element={<p>list of cities</p>} />
+          <Route path="cities" element={<CityList />} />
           <Route path="countries" element={<p>list of countries</p>} />
           <Route path="form" element={<p>Form</p>} />
         </Route>
