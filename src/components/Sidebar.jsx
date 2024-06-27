@@ -5,7 +5,7 @@ import AppNav from "./AppNav";
 
 const Sidebar = () => {
   return (
-    <aside className="relative h-screen  py-4 px-8 bg-[#091B29] max-w-sm  ">
+    <aside className="relative h-screen  py-4 px-8 bg-[#091B29] max-w-md ">
       <Logo />
       <AppNav />
 

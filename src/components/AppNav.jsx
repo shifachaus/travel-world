@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 
 const AppNav = () => {
   return (
-    <nav className="mt-6 mb-3">
-      <ul className="list-none flex items-center justify-center  gap-3  text-white ">
+    <nav className="mt-6 mb-8">
+      <ul className="list-none flex items-center justify-center  gap-3  text-zinc-200 ">
         <li className="flex">
           <NavLink
             to="cities"
