@@ -3,7 +3,7 @@ import Map from "../components/Map";
 import Sidebar from "../components/Sidebar";
 
 const AppLayout = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   return (
     <div className="relative">
