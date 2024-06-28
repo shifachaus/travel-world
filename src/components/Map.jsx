@@ -1,6 +1,6 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { useEffect, useState } from "react";
 import { useCities } from "../contexts/CitiesContext";
 
 const Map = () => {
@@ -8,17 +8,20 @@ const Map = () => {
   const { cities } = useCities();
 
   const [mapPosition, setMapPosition] = useState([40, 0]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
-  const lat = searchParams.get("lat");
-  const lng = searchParams.get("lng");
+  const mapLat = searchParams.get("lat");
+  const mapLng = searchParams.get("lng");
 
-  console.log(cities);
+  useEffect(() => {
+    if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
+  }, [mapLat, mapLng]);
+
   return (
     <div className="mx-auto h-screen " onClick={() => navigate("form")}>
       <MapContainer
         center={mapPosition}
-        zoom={13}
+        zoom={6}
         scrollWheelZoom={true}
         className="h-[100%]"
       >
@@ -37,9 +40,18 @@ const Map = () => {
             </Popup>
           </Marker>
         ))}
+
+        <ChangeCenter position={mapPosition} />
       </MapContainer>
     </div>
   );
 };
+
+function ChangeCenter({ position }) {
+  const map = useMap();
+  map.setView(position);
+
+  return null;
+}
 
 export default Map;
