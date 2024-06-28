@@ -9,9 +9,14 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 const CityItem = ({ city }) => {
-  const { currentCity } = useCities();
+  const { currentCity, deleteCity } = useCities();
 
   const { cityName, emoji, date, id, position } = city;
+
+  function handleClick(e) {
+    e.preventDefault();
+    deleteCity(id);
+  }
 
   return (
     <li>
@@ -31,7 +36,9 @@ const CityItem = ({ city }) => {
           <time className="font__CrimsonText text-sm">
             ({formatDate(date)})
           </time>
-          <button className="cursor-pointer">&times;</button>
+          <button className="cursor-pointer" onClick={handleClick}>
+            &times;
+          </button>
         </div>
       </Link>
     </li>
