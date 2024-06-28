@@ -14,7 +14,6 @@ import Button from "./Button";
 import { useUrlPosition } from "../hooks/useUrlPosition";
 
 const Map = () => {
-  const navigate = useNavigate();
   const { cities } = useCities();
 
   const [mapPosition, setMapPosition] = useState([40, 0]);
@@ -37,7 +36,7 @@ const Map = () => {
   }, [geolocationPosition]);
 
   return (
-    <div className="mx-auto h-screen " onClick={() => navigate("form")}>
+    <div className="mx-auto h-screen ">
       {!geolocationPosition && (
         <Button
           type={

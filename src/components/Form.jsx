@@ -7,6 +7,9 @@ import { useCities } from "../contexts/CitiesContext";
 import Spinner from "./Spinner";
 import Message from "./Message";
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
     .toUpperCase()
@@ -19,7 +22,7 @@ const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 
 const Form = () => {
   const [lat, lng] = useUrlPosition();
-  const { isLoading } = useCities();
+  const { isLoading, createCity } = useCities();
   const navigate = useNavigate();
 
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
@@ -75,25 +78,31 @@ const Form = () => {
       position: { lat, lng },
     };
 
+    console.log(newCity);
+
+    await createCity(newCity);
     navigate("/app/cities");
   }
 
   if (isLoadingGeocoding) return <Spinner />;
 
+  if (!lat && !lng)
+    return <Message message="Start by clicking somewhere on the map" />;
+
   if (geocodingError) return <Message message={geocodingError} />;
 
   return (
-    <form className="max-w-sm mx-auto " onSubmit={handleSubmit}>
+    <form className="max-w-sm mx-auto  " onSubmit={handleSubmit}>
       <div className="mb-5 ">
         <label
-          htmlFor="cityName "
+          htmlFor="cityName"
           className="block mb-2 text-md font-medium text-white"
         >
           City name
         </label>
         <div className="flex items-center  p-2.5 rounded-lg bg-[#2C3747] border-gray-600 ">
           <input
-            className="  placeholder-gray-400 text-white w-full  bg-[#2C3747] outline-none"
+            className=" px-1 placeholder-gray-400 text-white w-full  bg-[#2C3747] outline-none"
             id="cityName"
             onChange={(e) => setCityName(e.target.value)}
             value={cityName}
@@ -109,12 +118,16 @@ const Form = () => {
         >
           When did you go to {cityName}?
         </label>
-        <input
-          className="block w-full p-2.5 rounded-lg bg-[#2C3747] border-gray-600 placeholder-gray-400 text-white "
-          id="date"
-          onChange={(e) => setDate(e.target.value)}
-          value={date}
-        />
+
+        <div className="flex items-center  p-2.5 rounded-lg bg-[#2C3747] border-gray-600 ">
+          <DatePicker
+            id="date"
+            className=" px-1 placeholder-gray-400 text-white bg-[#2C3747] outline-0"
+            selected={date}
+            onChange={(date) => setDate(date)}
+            dateFormat="dd/MM/yyyy"
+          />
+        </div>
       </div>
 
       <div className="mb-5">
@@ -125,7 +138,7 @@ const Form = () => {
           Notes about your trip to {cityName}
         </label>
         <textarea
-          className="block w-full p-4 rounded-lg resize-none bg-[#2C3747] border-gray-600 placeholder-gray-400 text-white "
+          className="block w-full p-4 outline-0 rounded-lg resize-none bg-[#2C3747] border-gray-600 placeholder-gray-400 text-white "
           id="notes"
           onChange={(e) => setNotes(e.target.value)}
           value={notes}
