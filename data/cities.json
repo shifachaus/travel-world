@@ -1,3 +1,40 @@
 {
-  "cities": []
+  "cities": [
+    {
+      "cityName": "Mumbai",
+      "country": "India",
+      "emoji": "🇮🇳",
+      "date": "2024-06-01T09:28:04.000Z",
+      "notes": "",
+      "position": {
+        "lat": "19.026191534903145",
+        "lng": "72.76794433593751"
+      },
+      "id": 1
+    },
+    {
+      "cityName": "Sydney",
+      "country": "Australia",
+      "emoji": "🇦🇺",
+      "date": "2024-06-29T09:36:26.577Z",
+      "notes": "",
+      "position": {
+        "lat": "-33.85885289650351",
+        "lng": "151.22680664062503"
+      },
+      "id": 2
+    },
+    {
+      "cityName": "Toronto",
+      "country": "Canada",
+      "emoji": "🇨🇦",
+      "date": "2024-06-29T09:38:01.144Z",
+      "notes": "",
+      "position": {
+        "lat": "43.66805223471294",
+        "lng": "-79.34051513671876"
+      },
+      "id": 3
+    }
+  ]
 }

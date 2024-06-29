@@ -1,17 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "../components/Logo";
+import { useAuth } from "../contexts/FakeAuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("jack@example.com");
   const [password, setPassword] = useState("qwerty");
 
+  const { login, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (email && password) {
-      //
-    }
+    if (email && password) login(email, password);
   }
+
+  useEffect(
+    function () {
+      if (isAuthenticated) navigate("/app", { replace: true });
+    },
+    [isAuthenticated, navigate]
+  );
 
   return (
     <main className="mx-auto py-4 px-8 h-screen bg-[#091B29] ">
