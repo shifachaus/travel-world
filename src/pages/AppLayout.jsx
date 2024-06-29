@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Map from "../components/Map";
 import Sidebar from "../components/Sidebar";
+import User from "../components/User";
 
 const AppLayout = () => {
   const [show, setShow] = useState(true);
@@ -21,6 +22,7 @@ const AppLayout = () => {
         </>
       </div>
       <Map />
+      <User />
     </div>
   );
 };

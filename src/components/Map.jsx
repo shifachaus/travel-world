@@ -40,7 +40,7 @@ const Map = () => {
       {!geolocationPosition && (
         <Button
           type={
-            "absolute z-[9999] bottom-10 left-[50%] bg-[#2c3747] py-3 px-3.5 rounded-md font font-semibold text-[.95rem] text-zinc-200"
+            "absolute z-[1000] bottom-10 left-[50%] bg-[#2c3747] py-3 px-3.5 rounded-md font text-sm text-zinc-300"
           }
           onClick={getPosition}
         >
