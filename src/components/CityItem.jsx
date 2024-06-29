@@ -23,7 +23,7 @@ const CityItem = ({ city }) => {
       <Link
         to={`${id}?lat=${position.lat}&lng=${position.lng}`}
         className={` ${
-          id === currentCity.id
+          id === currentCity?.id
             ? "border border-l-4 border-l-primary border-primary"
             : "border border-l-4 border-l-primary border-t-[#2C3747] border-b-[#2C3747] border-r-[#2C3747] "
         } text-zinc-300 font cursor-pointer py-4 px-3 rounded-md flex justify-between gap-4 mb-2 hover:bg-[#2C3747]`}
