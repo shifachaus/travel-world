@@ -7,8 +7,7 @@ const Homepage = () => {
       <Logo />
       <section className="relative flex flex-col items-start md:items-center  pt-24  lg:pt-48 mx-auto">
         <h2 className="text-4xl lg:text-5xl mb-7 text-neutral-200 font-semibold md:text-center">
-          You travel the world. <br /> Travel world keeps track of your
-          adventures.
+          You travel the world. <br /> WorldWise keeps track of your adventures.
         </h2>
 
         <p className="text-sm mb-9  text-neutral-300 max-w-xl font font-medium">

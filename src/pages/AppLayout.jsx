@@ -1,28 +1,45 @@
-import { useState } from "react";
 import Map from "../components/Map";
 import Sidebar from "../components/Sidebar";
 import User from "../components/User";
 
 const AppLayout = () => {
-  const [show, setShow] = useState(true);
+  // const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="relative">
       <div className="absolute z-[9999] top-0">
-        <>
-          <p
-            onClick={() => setShow(!show)}
-            className={`absolute z-[10]  text-3xl ${
-              show ? "text-zinc-100" : "text-black"
-            } top-20 left-3 cursor-pointer`}
-          >
-            {">"}
-          </p>
-          {show && <Sidebar />}
-        </>
+        <Sidebar />
       </div>
       <Map />
       <User />
+
+      {/* <div className="absolute top-32 right-10 z-[1000] ">
+        <div
+          className={`relative  p-3 flex items-center bg-white rounded-[6px] transition-all duration-500 ease-in-out ${
+            isOpen ? "max-w-[240px]" : "max-w-[10px] mr-12"
+          }`}
+        >
+          <input
+            type="text"
+            placeholder="Search..."
+            className={`relative w-full text-[16px] font-normal text-[#333] px-4 rounded-[6px] outline-none border-none transition-all duration-500 ease-in-out ${
+              isOpen ? "pl-[65px]" : ""
+            }`}
+            onFocus={() => setIsOpen(true)}
+          />
+          <span
+            className={`absolute top-0 left-0 w-[60px] h-full flex justify-center items-center bg-white rounded-[6px] cursor-pointer ${
+              isOpen ? "rounded-l-[6px]" : ""
+            }`}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <MagnifyingGlass size={20} />
+          </span>
+          <span className=" cursor-pointer" onClick={() => setIsOpen(false)}>
+            <X size={20} />
+          </span>
+        </div>
+      </div> */}
     </div>
   );
 };

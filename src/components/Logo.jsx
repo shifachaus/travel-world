@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 const Logo = () => {
   return (
     <Link to={"/"}>
-      <h1 className="text-lg mb-6 text-neutral-50 font font-medium">
-        Travel world
+      <h1 className="text-md mb-10 text-zinc-300 font font-medium">
+        WorldWise
       </h1>
     </Link>
   );
