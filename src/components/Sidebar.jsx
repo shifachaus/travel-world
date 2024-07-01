@@ -3,6 +3,7 @@ import Logo from "./Logo";
 import AppNav from "./AppNav";
 import { useState } from "react";
 import { CaretRight, CaretLeft } from "phosphor-react";
+import User from "./User";
 
 const Sidebar = () => {
   const [show, setShow] = useState(false);
@@ -30,7 +31,10 @@ const Sidebar = () => {
         }  `}
       >
         <p
-          className={` ${!show && "bg-[#FAFCFF] text-zinc-500 shadow-md"} 
+          className={` ${
+            !show &&
+            "bg-[#FAFCFF] text-zinc-500 border border-zinc-300 shadow-md "
+          } 
           text-3xl rounded-md  px-3 py-3 cursor-pointer`}
         >
           {!show ? (

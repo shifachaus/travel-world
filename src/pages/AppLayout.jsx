@@ -1,9 +1,11 @@
+import { useState } from "react";
 import Map from "../components/Map";
 import Sidebar from "../components/Sidebar";
 import User from "../components/User";
+import { MagnifyingGlass, X } from "phosphor-react";
 
 const AppLayout = () => {
-  // const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="relative">
@@ -11,32 +13,19 @@ const AppLayout = () => {
         <Sidebar />
       </div>
       <Map />
-      <User />
 
-      {/* <div className="absolute top-32 right-10 z-[1000] ">
+      {/* <User />
+      <div className="absolute w-full sm:max-w-md  top-3.5 left-1/2 -translate-x-[50%] z-[1000] ">
         <div
-          className={`relative  p-3 flex items-center bg-white rounded-[6px] transition-all duration-500 ease-in-out ${
-            isOpen ? "max-w-[240px]" : "max-w-[10px] mr-12"
-          }`}
+          className={` mx-4 p-2 flex items-center border border-zinc-300 shadow-md  bg-white rounded-[6px]`}
         >
           <input
             type="text"
-            placeholder="Search..."
-            className={`relative w-full text-[16px] font-normal text-[#333] px-4 rounded-[6px] outline-none border-none transition-all duration-500 ease-in-out ${
-              isOpen ? "pl-[65px]" : ""
-            }`}
-            onFocus={() => setIsOpen(true)}
+            placeholder="Search location"
+            className={` w-full text-[16px] font-normal text-[#333] px-4 rounded-[6px] outline-none border-none transition-all duration-500 ease-in-out `}
           />
-          <span
-            className={`absolute top-0 left-0 w-[60px] h-full flex justify-center items-center bg-white rounded-[6px] cursor-pointer ${
-              isOpen ? "rounded-l-[6px]" : ""
-            }`}
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <MagnifyingGlass size={20} />
-          </span>
-          <span className=" cursor-pointer" onClick={() => setIsOpen(false)}>
-            <X size={20} />
+          <span className="cursor-pointer">
+            <MagnifyingGlass size={20} color="#5a5959" />
           </span>
         </div>
       </div> */}
