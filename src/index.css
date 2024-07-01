@@ -39,6 +39,27 @@ body,
   border-left: 5px solid #ffcf4a;
 }
 
+/* Search */
+.leaflet-control-geocoder-form {
+  background: #fff;
+  padding: 4px;
+}
+
+.leaflet-control-geocoder-form input {
+  height: 30px;
+  border: none;
+  padding: 4px;
+  font-size: 14px;
+}
+
+.leaflet-control-geocoder-form input:focus {
+  outline: none;
+}
+
+.leaflet-control-geocoder-button {
+  display: none;
+}
+
 @layer utilities {
   .custom-bg {
     background-image: linear-gradient(

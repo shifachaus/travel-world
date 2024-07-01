@@ -11,7 +11,7 @@ const User = () => {
     navigate("/");
   }
   return (
-    <div className="p-3 hidden   bg-[#FAFCFF]  absolute top-3.5 right-10 z-[1000] rounded-md md:flex justify-between items-center gap-4 text-zinc-800">
+    <div className="p-3 bg-[#FAFCFF]  md:absolute top-3 left-16 z-[1000] rounded-md flex justify-between items-center gap-4 text-zinc-800">
       <div className="flex items-center gap-2 font text-sm">
         <img
           src={user.avatar}

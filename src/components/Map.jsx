@@ -42,11 +42,11 @@ const Map = () => {
   }, [geolocationPosition]);
 
   return (
-    <div className="mx-auto h-screen ">
+    <div className="mx-auto h-screen bottom-">
       {!geolocationPosition && (
         <Button
           type={
-            "absolute z-[1000] bottom-10 left-1/2 -translate-x-[50%] -translate-y-[50%] bg-[#FAFCFF] py-3 px-5 rounded-md shadow-lg font text-sm text-zinc-800"
+            "absolute z-[1000] bottom-24 sm:bottom-36 md:bottom-10 lg:bottom-24 xl:bottom-10 left-1/2 -translate-x-[50%] -translate-y-[50%] bg-[#FAFCFF] py-3 px-5 rounded-md shadow-lg font text-sm text-zinc-800"
           }
           onClick={getPosition}
         >
