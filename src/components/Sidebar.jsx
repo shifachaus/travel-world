@@ -3,7 +3,6 @@ import Logo from "./Logo";
 import AppNav from "./AppNav";
 import { useState } from "react";
 import { CaretRight, CaretLeft } from "phosphor-react";
-import User from "./User";
 
 const Sidebar = () => {
   const [show, setShow] = useState(false);

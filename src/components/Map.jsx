@@ -13,6 +13,7 @@ import { useGeolocation } from "../hooks/useGeolocation";
 import Button from "./Button";
 import { useUrlPosition } from "../hooks/useUrlPosition";
 import LeafletSearch from "./LeafletSearch";
+import { NavigationArrow } from "phosphor-react";
 
 // Import mapbox access token
 const MAPBOX_ACCESS_TOKEN = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
@@ -42,15 +43,21 @@ const Map = () => {
   }, [geolocationPosition]);
 
   return (
-    <div className="mx-auto h-screen bottom-">
+    <div className="mx-auto h-screen">
       {!geolocationPosition && (
         <Button
           type={
-            "absolute z-[1000] bottom-24 sm:bottom-36 md:bottom-10 lg:bottom-24 xl:bottom-10 left-1/2 -translate-x-[50%] -translate-y-[50%] bg-[#FAFCFF] py-3 px-5 rounded-md shadow-lg font text-sm text-zinc-800"
+            " z-[1000] absolute top-[34rem] right-3   bg-[#FAFCFF] py-2.5 px-4 rounded-md font text-zinc-500 border border-zinc-300 shadow-md"
           }
           onClick={getPosition}
         >
-          {isLoadingPosition ? "Loading..." : "User your position"}
+          {isLoadingPosition ? (
+            "Loading..."
+          ) : (
+            <span className="flex gap-2 items-center uppercase text-[.7rem] font font-semibold">
+              User your position <NavigationArrow size={22} color={"#313131"} />
+            </span>
+          )}
         </Button>
       )}
       <MapContainer
