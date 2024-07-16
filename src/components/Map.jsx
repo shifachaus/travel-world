@@ -59,6 +59,7 @@ const Map = () => {
   };
 
   const navigateToScene = () => {
+    dispatch({ type: "hide/scene" });
     navigate("/scene", {
       state: { imageURL: state.selectedLocation.imageUrl },
     });

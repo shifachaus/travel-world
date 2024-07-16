@@ -19,6 +19,7 @@ const CityList = () => {
   return (
     <ul>
       {cities?.map((city) => {
+        console.log(city);
         return <CityItem city={city} key={city.id} />;
       })}
     </ul>

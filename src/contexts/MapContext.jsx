@@ -23,6 +23,18 @@ function reducer(state, action) {
         showSceneButton: true,
       };
 
+    case "hide/scene":
+      return {
+        ...state,
+        showSceneButton: false,
+      };
+
+    case "hide/camera":
+      return {
+        ...state,
+        isCameraEnabled: false,
+      };
+
     default:
       return state;
   }

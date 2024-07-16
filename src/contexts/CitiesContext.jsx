@@ -5,8 +5,7 @@ import {
   useEffect,
   useReducer,
 } from "react";
-
-const BASE_URL = "http://localhost:9000";
+import { v4 as uuidv4 } from "uuid";
 
 const CitiesContext = createContext();
 
@@ -56,7 +55,7 @@ function reducer(state, action) {
       };
 
     default:
-      throw new Error("Unknown actiontype");
+      throw new Error("Unknown action type");
   }
 }
 
@@ -67,17 +66,16 @@ function CitiesProvider({ children }) {
   );
 
   useEffect(() => {
-    async function fetchCities() {
+    function fetchCities() {
       dispatch({ type: "loading" });
 
       try {
-        const res = await fetch(`${BASE_URL}/cities`);
-        const data = await res.json();
+        const data = JSON.parse(localStorage.getItem("cities")) || [];
         dispatch({ type: "cities/loaded", payload: data });
       } catch (err) {
         dispatch({
           type: "rejected",
-          payload: "There was an error creating city...",
+          payload: "There was an error loading cities...",
         });
       }
     }
@@ -86,55 +84,50 @@ function CitiesProvider({ children }) {
   }, []);
 
   const getCity = useCallback(
-    async function getCity(id) {
+    function getCity(id) {
       if (Number(id) === currentCity.id) return;
 
       dispatch({ type: "loading" });
 
       try {
-        const res = await fetch(`${BASE_URL}/cities/${id}`);
-        const data = await res.json();
+        const data = JSON.parse(localStorage.getItem("cities")) || [];
+        const city = data.find((city) => city.id === id);
 
-        dispatch({ type: "city/loaded", payload: data });
+        dispatch({ type: "city/loaded", payload: city });
       } catch (err) {
         dispatch({
           type: "rejected",
-          payload: "There was an error creating city...",
+          payload: "There was an error loading the city...",
         });
       }
     },
     [currentCity.id]
   );
 
-  async function createCity(newCity) {
+  function createCity(newCity) {
     dispatch({ type: "loading" });
 
     try {
-      const res = await fetch(`${BASE_URL}/cities`, {
-        method: "POST",
-        body: JSON.stringify(newCity),
-
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
-      dispatch({ type: "city/created", payload: data });
+      const data = JSON.parse(localStorage.getItem("cities")) || [];
+      const cityWithId = { ...newCity, id: uuidv4() };
+      const updatedData = [...data, cityWithId];
+      localStorage.setItem("cities", JSON.stringify(updatedData));
+      dispatch({ type: "city/created", payload: cityWithId });
     } catch (err) {
       dispatch({
         type: "rejected",
-        payload: "There was an error creating city...",
+        payload: "There was an error creating the city...",
       });
     }
   }
 
-  async function deleteCity(id) {
+  function deleteCity(id) {
     dispatch({ type: "loading" });
 
     try {
-      await fetch(`${BASE_URL}/cities/${id}`, {
-        method: "DELETE",
-      });
+      const data = JSON.parse(localStorage.getItem("cities")) || [];
+      const updatedData = data.filter((city) => city.id !== id);
+      localStorage.setItem("cities", JSON.stringify(updatedData));
 
       dispatch({ type: "city/deleted", payload: id });
     } catch {

@@ -1,11 +1,19 @@
 import { Engine, Scene } from "react-babylonjs";
 import { Vector3 } from "@babylonjs/core";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import SpinningBox from "./SpinningBox";
+import { useMaps } from "../contexts/MapContext";
 
 const SceneWithSpinningBoxes = () => {
+  const navigate = useNavigate();
+  const { dispatch } = useMaps();
   const location = useLocation();
   const imageURL = location.state.imageURL;
+
+  function handleGoToHome() {
+    dispatch({ type: "hide/camera" });
+    navigate("/app");
+  }
 
   return (
     <div className="flex flex-col h-screen relative">
@@ -33,12 +41,12 @@ const SceneWithSpinningBoxes = () => {
 
       {/* Back to home button */}
       <div className="absolute top-3.5 left-5 flex justify-center items-center">
-        <Link
-          to="/app"
+        <button
+          onClick={handleGoToHome}
           className="bg-neutral-300  px-4 py-1.5 rounded-md font text-sm font-semibold"
         >
           Back to home
-        </Link>
+        </button>
       </div>
     </div>
   );
