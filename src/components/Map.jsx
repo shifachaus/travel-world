@@ -14,6 +14,8 @@ import { useUrlPosition } from "../hooks/useUrlPosition";
 import LeafletSearch from "./LeafletSearch";
 import { NavigationArrow, Camera, Cube } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
+import MapActionButtons from "./MapActionButtons";
+import { useMaps } from "../contexts/MapContext";
 
 // Import mapbox access token
 const MAPBOX_ACCESS_TOKEN = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
@@ -21,18 +23,19 @@ const MAPBOX_ACCESS_TOKEN = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 const Map = () => {
   const navigate = useNavigate();
 
-  const mapRef = useRef(null);
   const { cities } = useCities();
+  const { state, dispatch } = useMaps();
+
   const [mapPosition, setMapPosition] = useState([40, 0]);
+  const [mapLat, mapLng] = useUrlPosition();
+
   const {
     isLoading: isLoadingPosition,
     position: geolocationPosition,
     getPosition,
   } = useGeolocation();
-  const [mapLat, mapLng] = useUrlPosition();
-  const [isCameraEnabled, setIsCameraEnabled] = useState(false);
-  const [selectedLocation, setSelectedLocation] = useState(null);
-  const [showSceneButton, setShowSceneButton] = useState(false);
+
+  const mapRef = useRef(null);
 
   useEffect(() => {
     if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
@@ -44,46 +47,29 @@ const Map = () => {
   }, [geolocationPosition]);
 
   const handleLocationSelected = (location) => {
-    setSelectedLocation(location);
+    console.log(state);
+    dispatch({ type: "select/location", payload: location });
     setMapPosition([location.lat, location.lng]);
-    setIsCameraEnabled(true);
   };
 
   const takeScreenshot = () => {
-    if (selectedLocation) {
-      setShowSceneButton(true);
+    if (state.selectedLocation) {
+      dispatch({ type: "show/scene" });
     }
   };
 
   const navigateToScene = () => {
-    if (selectedLocation) {
-      navigate("/scene", { state: { imageURL: selectedLocation.imageUrl } });
-    }
+    navigate("/scene", {
+      state: { imageURL: state.selectedLocation.imageUrl },
+    });
   };
 
   return (
     <div className="relative h-screen">
-      <div className="z-[1000] absolute top-[31rem] right-3 flex gap-3 ">
-        {isCameraEnabled && (
-          <button
-            onClick={takeScreenshot}
-            className={
-              "  bg-[#FAFCFF] p-2.5 rounded-md font text-zinc-500 border border-zinc-300 shadow-md"
-            }
-          >
-            <Camera size={22} color={"#313131"} />
-          </button>
-        )}
-
-        {showSceneButton && (
-          <button
-            onClick={navigateToScene}
-            className="bg-[#FAFCFF] p-2.5 rounded-md font text-zinc-500 border border-zinc-300 shadow-md"
-          >
-            <Cube size={22} color={"#313131"} />
-          </button>
-        )}
-      </div>
+      <MapActionButtons
+        takeScreenshot={takeScreenshot}
+        navigateToScene={navigateToScene}
+      />
 
       {!geolocationPosition && (
         <Button
