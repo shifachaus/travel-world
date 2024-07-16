@@ -1,6 +1,5 @@
-import React from "react";
 import { Engine, Scene } from "react-babylonjs";
-import { Vector3, Color3 } from "@babylonjs/core";
+import { Vector3 } from "@babylonjs/core";
 import { Link, useLocation } from "react-router-dom";
 import SpinningBox from "./SpinningBox";
 

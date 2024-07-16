@@ -36,6 +36,8 @@ const SpinningBox = ({ name, position, imageURL }) => {
       size={2}
       position={position}
       scaling={clicked ? BiggerScale : DefaultScale}
+      width={0.8}
+      wrap
     >
       <standardMaterial ref={materialRef} />
     </box>
