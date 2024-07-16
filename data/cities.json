@@ -1,18 +1,6 @@
 {
   "cities": [
     {
-      "cityName": "Mumbai",
-      "country": "India",
-      "emoji": "🇮🇳",
-      "date": "2024-06-01T09:28:04.000Z",
-      "notes": "",
-      "position": {
-        "lat": "19.026191534903145",
-        "lng": "72.76794433593751"
-      },
-      "id": 1
-    },
-    {
       "cityName": "Sydney",
       "country": "Australia",
       "emoji": "🇦🇺",
@@ -47,6 +35,18 @@
         "lng": "-9.137878417968752"
       },
       "id": 4
+    },
+    {
+      "cityName": "Mumbai",
+      "country": "India",
+      "emoji": "🇮🇳",
+      "date": "2024-07-02T09:05:43.566Z",
+      "notes": "",
+      "position": {
+        "lat": "19.08320772465982",
+        "lng": "72.92724609375001"
+      },
+      "id": 5
     }
   ]
 }

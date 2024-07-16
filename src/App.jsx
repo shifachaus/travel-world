@@ -8,6 +8,7 @@ import { CitiesProvider } from "./contexts/CitiesContext";
 import { AuthProvider } from "./contexts/FakeAuthContext";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import SpinnerFullPage from "./components/SpinnerFullPage";
+import SceneWithSpinningBoxes from "./components/SceneWithSpinningBoxes";
 
 const Homepage = lazy(() => import("./pages/Homepage"));
 const Login = lazy(() => import("./pages/Login"));
@@ -38,6 +39,7 @@ const App = () => {
                 <Route path="countries" element={<CountryList />} />
                 <Route path="form" element={<Form />} />
               </Route>
+              <Route path="scene" element={<SceneWithSpinningBoxes />} />
             </Routes>
           </Suspense>
         </BrowserRouter>

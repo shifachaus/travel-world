@@ -8,7 +8,7 @@ const AppLayout = () => {
       <div className="absolute z-[9999] top-0">
         <Sidebar />
       </div>
-      <User />
+      {/* <User /> */}
       <Map />
     </div>
   );

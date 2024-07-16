@@ -18,7 +18,7 @@ const Homepage = () => {
 
         <Link
           to={"login"}
-          className="bg-primary  border-primary hover:border-neutral-400  text-neutral-200 rounded-md py-3 px-6 border text-xs  cursor-pointer font font-semibold"
+          className="bg-primary  border-primary text-neutral-200 rounded-md py-3 px-6 border text-xs  cursor-pointer font font-semibold"
         >
           START TRACKING NOW
         </Link>

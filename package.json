@@ -12,11 +12,13 @@
     "server": "json-server --watch data/cities.json --port 9000 --delay 500"
   },
   "dependencies": {
+    "@babylonjs/core": "^7.13.1",
     "json-server": "^0.17.4",
     "leaflet": "^1.9.4",
     "leaflet-control-geocoder": "^2.4.0",
     "phosphor-react": "^1.4.1",
     "react": "^18.3.1",
+    "react-babylonjs": "^3.2.0",
     "react-datepicker": "^7.2.0",
     "react-dom": "^18.3.1",
     "react-leaflet": "^4.2.1",
