@@ -24,7 +24,7 @@ const Login = () => {
   );
 
   return (
-    <main className="mx-auto py-4 px-8 h-screen bg-[#091B29] ">
+    <main className="mx-auto py-4 px-8 h-screen bg-[#111] ">
       <Logo />
       <form
         className="max-w-sm mx-auto pt-24 lg:pt-40 "
@@ -40,7 +40,7 @@ const Login = () => {
           <input
             type="email"
             id="email"
-            className="block w-full p-2.5 rounded-lg bg-[#2C3747] border-gray-600 placeholder-gray-400 text-white "
+            className="block w-full p-2.5 rounded-lg bg-[#292a2a] border-gray-600 placeholder-gray-400 text-white "
             placeholder="jack@example.com"
             required
             onChange={(e) => setEmail(e.target.value)}
@@ -58,7 +58,7 @@ const Login = () => {
           <input
             type="password"
             id="password"
-            className="block w-full p-2.5 rounded-lg bg-[#2C3747] border-gray-600 placeholder-gray-400 text-white "
+            className="block w-full p-2.5 rounded-lg bg-[#292a2a] border-gray-600 placeholder-gray-400 text-white "
             required
             onChange={(e) => setPassword(e.target.value)}
             value={password}
@@ -66,7 +66,7 @@ const Login = () => {
         </div>
 
         <div>
-          <button className="font text-white bg-primary hover:primary font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">
+          <button className="font text-white bg-primary-600 hover:primary font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">
             Login
           </button>
         </div>

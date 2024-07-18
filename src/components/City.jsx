@@ -25,7 +25,7 @@ const City = () => {
   if (isLoading) return <Spinner />;
 
   return (
-    <div className="text-zinc-300 font cursor-pointer  p-6 rounded-md  mb-2 bg-[#2C3747]">
+    <div className="text-zinc-300 font cursor-pointer  p-6 rounded-md  mb-2 bg-gray-800">
       <div className="flex flex-col mb-3 ">
         <h6 className="text-[.9rem]  font font-semibold text-[#CBDAF3] ">
           City name

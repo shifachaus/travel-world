@@ -24,9 +24,9 @@ const CityItem = ({ city }) => {
         to={`${id}?lat=${position.lat}&lng=${position.lng}`}
         className={` ${
           id === currentCity?.id
-            ? "border border-l-4 border-l-primary border-primary"
-            : "border border-l-4 border-l-primary border-t-[#2C3747] border-b-[#2C3747] border-r-[#2C3747] "
-        } text-zinc-300 font cursor-pointer py-4 px-3 rounded-md flex justify-between gap-4 mb-2 hover:bg-[#2C3747]`}
+            ? "border border-l-4 border-l-primary-600 border-primary-600"
+            : "border border-l-4 border-l-primary-600 border-t-gray-800 border-b-gray-800 border-r-gray-800 "
+        } text-zinc-300 font cursor-pointer py-4 px-3 rounded-md flex justify-between gap-4 mb-2 hover:bg-gray-800`}
       >
         <div className="flex gap-4 items-center">
           <span className="text-md">{emoji}</span>

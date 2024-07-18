@@ -65,8 +65,6 @@ const Map = () => {
     });
   };
 
-  console.log(tooltipPosition);
-
   return (
     <div className="relative h-screen">
       <MapActionButtons

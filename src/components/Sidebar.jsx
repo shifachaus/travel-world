@@ -3,18 +3,17 @@ import Logo from "./Logo";
 import AppNav from "./AppNav";
 import { useState } from "react";
 import { CaretRight, CaretLeft } from "phosphor-react";
+import Footer from "./Footer";
 
 const Sidebar = () => {
   const [show, setShow] = useState(false);
-
-  console.log(show);
 
   return (
     <aside
       className={
         show
-          ? "bg-[#091B29]  p-4 z-40  h-full font-light transform transition-all delay-75 duration-300 ease-out fixed top-0 left-0 w-full md:w-5/12 lg:w-3/12"
-          : " bg-[#091B29] -translate-x-full transform transition-all delay-75 duration-300 ease-out h-full fixed top-0 left-0 "
+          ? "bg-[#111]  p-4 z-40  h-full font-light transform transition-all delay-75 duration-300 ease-out fixed top-0 left-0 w-full md:w-5/12 lg:w-3/12"
+          : " bg-[#111] -translate-x-full transform transition-all delay-75 duration-300 ease-out h-full fixed top-0 left-0 "
       }
     >
       <Logo />
@@ -43,6 +42,8 @@ const Sidebar = () => {
           )}
         </p>
       </div>
+
+      <Footer />
     </aside>
   );
 };

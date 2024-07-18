@@ -44,7 +44,6 @@ const Form = () => {
 
         const res = await fetch(`${BASE_URL}?latitude=${lat}&longitude=${lng}`);
         const data = await res.json();
-        console.log(data);
 
         if (!data.countryCode)
           throw new Error(
@@ -98,9 +97,9 @@ const Form = () => {
         >
           City name
         </label>
-        <div className="flex items-center  p-2.5 rounded-lg bg-[#2C3747] border-gray-600 ">
+        <div className="flex items-center  p-2.5 rounded-lg bg-gray-800 border-gray-600 ">
           <input
-            className=" px-1 placeholder-gray-400 text-white w-full  bg-[#2C3747] outline-none"
+            className=" px-1 placeholder-gray-400 text-white w-full  bg-gray-800 outline-none"
             id="cityName"
             onChange={(e) => setCityName(e.target.value)}
             value={cityName}
@@ -117,10 +116,10 @@ const Form = () => {
           When did you go to {cityName}?
         </label>
 
-        <div className="flex items-center  p-2.5 rounded-lg bg-[#2C3747] border-gray-600 ">
+        <div className="flex items-center  p-2.5 rounded-lg bg-gray-800 border-gray-600 ">
           <DatePicker
             id="date"
-            className=" px-1 placeholder-gray-400 text-white bg-[#2C3747] outline-0"
+            className=" px-1 placeholder-gray-400 text-white bg-gray-800 outline-0"
             selected={date}
             onChange={(date) => setDate(date)}
             dateFormat="dd/MM/yyyy"
@@ -136,7 +135,7 @@ const Form = () => {
           Notes about your trip to {cityName}
         </label>
         <textarea
-          className="block w-full p-4 outline-0 rounded-lg resize-none bg-[#2C3747] border-gray-600 placeholder-gray-400 text-white "
+          className="block w-full p-4 outline-0 rounded-lg resize-none bg-gray-800 border-gray-600 placeholder-gray-400 text-white "
           id="notes"
           onChange={(e) => setNotes(e.target.value)}
           value={notes}
@@ -145,7 +144,7 @@ const Form = () => {
 
       <div className="flex justify-between">
         <BackButton />
-        <Button type="bg-primary rounded-lg px-5 py-2.5">Add</Button>
+        <Button type="bg-primary-600 rounded-lg px-5 py-2.5">Add</Button>
       </div>
     </form>
   );

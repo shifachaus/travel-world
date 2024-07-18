@@ -9,7 +9,7 @@ const AppNav = () => {
             to="cities"
             className={({ isActive }) =>
               isActive
-                ? "text-sm uppercase font bg-[#2C3747] py-2 px-3 rounded-md"
+                ? "text-sm uppercase font bg-gray-800 py-2 px-3 rounded-md"
                 : "text-sm uppercase font py-2 px-3 "
             }
           >
@@ -21,7 +21,7 @@ const AppNav = () => {
             to="countries"
             className={({ isActive }) =>
               isActive
-                ? "text-sm uppercase font bg-[#2C3747] py-2 px-3 rounded-md"
+                ? "text-sm uppercase font bg-gray-800  py-2 px-3 rounded-md"
                 : "text-sm uppercase font py-2 px-3 "
             }
           >
