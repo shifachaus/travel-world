@@ -4,15 +4,17 @@ import {
   TileLayer,
   Marker,
   Popup,
+  Tooltip,
   useMap,
   useMapEvents,
+  CircleMarker,
 } from "react-leaflet";
 import { useCities } from "../contexts/CitiesContext";
 import { useGeolocation } from "../hooks/useGeolocation";
 import Button from "./Button";
 import { useUrlPosition } from "../hooks/useUrlPosition";
 import LeafletSearch from "./LeafletSearch";
-import { NavigationArrow, Camera, Cube } from "phosphor-react";
+import { NavigationArrow } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
 import MapActionButtons from "./MapActionButtons";
 import { useMaps } from "../contexts/MapContext";
@@ -22,12 +24,11 @@ const MAPBOX_ACCESS_TOKEN = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
 const Map = () => {
   const navigate = useNavigate();
-
   const { cities } = useCities();
   const { state, dispatch } = useMaps();
-
   const [mapPosition, setMapPosition] = useState([40, 0]);
   const [mapLat, mapLng] = useUrlPosition();
+  const [tooltipPosition, setTooltipPosition] = useState(null);
 
   const {
     isLoading: isLoadingPosition,
@@ -47,7 +48,6 @@ const Map = () => {
   }, [geolocationPosition]);
 
   const handleLocationSelected = (location) => {
-    console.log(state);
     dispatch({ type: "select/location", payload: location });
     setMapPosition([location.lat, location.lng]);
   };
@@ -64,6 +64,8 @@ const Map = () => {
       state: { imageURL: state.selectedLocation.imageUrl },
     });
   };
+
+  console.log(tooltipPosition);
 
   return (
     <div className="relative h-screen">
@@ -117,7 +119,17 @@ const Map = () => {
         ))}
 
         <ChangeCenter position={mapPosition} />
-        <DetectClick />
+        <DetectClick setTooltipPosition={setTooltipPosition} />
+
+        {tooltipPosition && (
+          <CircleMarker
+            center={[tooltipPosition?.lat, tooltipPosition?.lng]}
+            pathOptions={{ color: "red" }}
+            radius={10}
+          >
+            <Tooltip>Open sidebar and mark as favorite.</Tooltip>
+          </CircleMarker>
+        )}
 
         <LeafletSearch onLocationSelected={handleLocationSelected} />
       </MapContainer>
@@ -131,10 +143,14 @@ function ChangeCenter({ position }) {
   return null;
 }
 
-function DetectClick() {
+function DetectClick({ setTooltipPosition }) {
   const navigate = useNavigate();
   useMapEvents({
-    click: (e) => navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`),
+    click: (e) => {
+      setTooltipPosition(e.latlng);
+      setTimeout(() => setTooltipPosition(null), 3000);
+      navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
+    },
   });
 }
 

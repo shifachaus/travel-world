@@ -109,6 +109,11 @@ function CitiesProvider({ children }) {
 
     try {
       const data = JSON.parse(localStorage.getItem("cities")) || [];
+
+      if (data.length >= 5) {
+        throw new Error("You can only add up to 5 cities.");
+      }
+
       const cityWithId = { ...newCity, id: uuidv4() };
       const updatedData = [...data, cityWithId];
       localStorage.setItem("cities", JSON.stringify(updatedData));
@@ -116,11 +121,10 @@ function CitiesProvider({ children }) {
     } catch (err) {
       dispatch({
         type: "rejected",
-        payload: "There was an error creating the city...",
+        payload: err.message || "There was an error creating the city...",
       });
     }
   }
-
   function deleteCity(id) {
     dispatch({ type: "loading" });
 
