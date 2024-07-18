@@ -110,7 +110,7 @@ const Map = () => {
             position={[city.position.lat, city.position.lng]}
             key={city.id}
           >
-            <Popup>
+            <Popup className="custom-popup">
               <span>{city.emoji}</span> <span>{city.cityName}</span>
             </Popup>
           </Marker>
@@ -121,11 +121,14 @@ const Map = () => {
 
         {tooltipPosition && (
           <CircleMarker
+            className="relative"
             center={[tooltipPosition?.lat, tooltipPosition?.lng]}
             pathOptions={{ color: "red" }}
             radius={10}
           >
-            <Tooltip>Open sidebar and mark as favorite.</Tooltip>
+            <Popup className="custom-tooltip">
+              Open sidebar and mark as favorite.
+            </Popup>
           </CircleMarker>
         )}
 
@@ -146,7 +149,7 @@ function DetectClick({ setTooltipPosition }) {
   useMapEvents({
     click: (e) => {
       setTooltipPosition(e.latlng);
-      setTimeout(() => setTooltipPosition(null), 3000);
+      // setTimeout(() => setTooltipPosition(null), 5000);
       navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
     },
   });
